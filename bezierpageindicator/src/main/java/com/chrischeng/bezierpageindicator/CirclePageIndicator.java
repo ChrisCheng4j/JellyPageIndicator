@@ -6,11 +6,16 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
 public class CirclePageIndicator extends View implements IPageIndicator {
+
+    private static final String KEY_INSTANCE = "instance";
+    private static final String KEY_POSTION = "postion";
 
     private int mOrientation;
     private float mRadius;
@@ -156,6 +161,24 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         }
 
         canvas.drawCircle(cx, cy, mRadius, mSelectedPaint);
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(KEY_INSTANCE, super.onSaveInstanceState());
+        bundle.putInt(KEY_POSTION, mCurrentPosition);
+        return bundle;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+            mCurrentPosition = bundle.getInt(KEY_POSTION);
+            super.onRestoreInstanceState(bundle.getParcelable(KEY_INSTANCE));
+        } else
+            super.onRestoreInstanceState(state);
     }
 
     private void init(Context context, AttributeSet attrs) {
