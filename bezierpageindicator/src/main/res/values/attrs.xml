@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CirclePageIndicator">
+        <attr name="android:orientation" />
+        <attr name="radius" format="dimension" />
+        <attr name="spacing" format="dimension" />
+        <attr name="normalColor" format="color" />
+        <attr name="selectedColor" format="color" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="android:background" />
+        <attr name="count" format="integer" />
+    </declare-styleable>
+</resources>
