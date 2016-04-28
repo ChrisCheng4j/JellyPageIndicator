@@ -8,12 +8,11 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class CirclePageIndicator extends View implements ViewPager.OnPageChangeListener {
+public class CirclePageIndicator extends View implements IPageIndicator {
 
     private static final String KEY_INSTANCE = "instance";
     private static final String KEY_POSITION = "position";
@@ -36,6 +35,12 @@ public class CirclePageIndicator extends View implements ViewPager.OnPageChangeL
     public CirclePageIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
+    }
+
+    @Override
+    public void setCurrentItem(int item) {
+        mCurrentPosition = item;
+        postInvalidate();
     }
 
     @Override
