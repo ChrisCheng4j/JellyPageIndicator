@@ -8,5 +8,6 @@
         <attr name="selectedColor" format="color" />
         <attr name="android:background" />
         <attr name="count" format="integer" />
+        <attr name="slideable" format="boolean" />
     </declare-styleable>
 </resources>

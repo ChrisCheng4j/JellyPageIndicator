@@ -21,6 +21,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     private float mRadius;
     private float mSpacing;
     private int mCount;
+    private boolean mSlideable;
 
     private Paint mNormalPaint;
     private Paint mSelectedPaint;
@@ -45,9 +46,11 @@ public class CirclePageIndicator extends View implements IPageIndicator {
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        mCurrentPosition = position;
-        mPositionOffset = positionOffset;
-        postInvalidate();
+        if (mSlideable) {
+            mCurrentPosition = position;
+            mPositionOffset = positionOffset;
+            postInvalidate();
+        }
     }
 
     @Override
@@ -92,6 +95,10 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     public void setSelectedColor(int color) {
         mSelectedPaint.setColor(color);
         invalidate();
+    }
+
+    public void setSlideable(boolean slideable) {
+        mSlideable = slideable;
     }
 
     @Override
@@ -200,6 +207,8 @@ public class CirclePageIndicator extends View implements IPageIndicator {
             setBackgroundDrawable(background);
         mCount = a.getInteger(R.styleable.CirclePageIndicator_count,
                 res.getInteger(R.integer.default_circle_count));
+        mSlideable = a.getBoolean(R.styleable.CirclePageIndicator_slideable,
+                res.getBoolean(R.bool.default_circle_slideable));
 
         a.recycle();
     }

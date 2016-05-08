@@ -6,4 +6,5 @@
     <color name="default_circle_normal_color">#ff999999</color>
     <color name="default_circle_selected_color">#ff00beaf</color>
     <integer name="default_circle_count">0</integer>
+    <bool name="default_circle_slideable">true</bool>
 </resources>
