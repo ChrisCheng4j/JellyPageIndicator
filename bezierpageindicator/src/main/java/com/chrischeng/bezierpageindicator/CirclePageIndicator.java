@@ -55,6 +55,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
 
     @Override
     public void onPageSelected(int position) {
+        mPositionOffset = 0;
         mCurrentPosition = position;
         postInvalidate();
     }
