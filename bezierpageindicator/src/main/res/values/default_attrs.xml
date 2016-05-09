@@ -7,4 +7,5 @@
     <color name="default_circle_selected_color">#ff00beaf</color>
     <integer name="default_circle_count">0</integer>
     <bool name="default_circle_slideable">true</bool>
+    <bool name="default_circle_oneshow">false</bool>
 </resources>

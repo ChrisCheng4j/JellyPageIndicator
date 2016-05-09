@@ -9,5 +9,6 @@
         <attr name="android:background" />
         <attr name="bpi_circle_count" format="integer" />
         <attr name="bpi_circle_slideable" format="boolean" />
+        <attr name="bpi_circle_single_show" format="boolean" />
     </declare-styleable>
 </resources>

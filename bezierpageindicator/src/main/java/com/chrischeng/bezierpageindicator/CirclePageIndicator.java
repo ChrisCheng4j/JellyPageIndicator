@@ -22,6 +22,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     private float mSpacing;
     private int mCount;
     private boolean mSlideable;
+    private boolean mIsSingleShow;
 
     private Paint mNormalPaint;
     private Paint mSelectedPaint;
@@ -102,6 +103,12 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         mSlideable = slideable;
     }
 
+    public void setSingleShow(boolean isSingleShow) {
+        mIsSingleShow = isSingleShow;
+        if (mCount == 1)
+            invalidate();
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (mOrientation == LinearLayout.HORIZONTAL)
@@ -114,7 +121,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (mCount <= 0)
+        if (mCount <= 0 || (mCount == 1 && !mIsSingleShow))
             return;
 
         float longOffset = mRadius;
@@ -210,6 +217,8 @@ public class CirclePageIndicator extends View implements IPageIndicator {
                 res.getInteger(R.integer.default_circle_count));
         mSlideable = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_slideable,
                 res.getBoolean(R.bool.default_circle_slideable));
+        mIsSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_single_show,
+                res.getBoolean(R.bool.default_circle_oneshow));
 
         a.recycle();
     }
