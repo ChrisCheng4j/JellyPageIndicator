@@ -1,2 +1,2 @@
 # BezierPageIndicator
-compile 'com.chrischeng:bezierpageindicator:1.0.1'
+compile 'com.chrischeng:bezierpageindicator:1.0.4'
