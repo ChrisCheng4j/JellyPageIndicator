@@ -2,12 +2,12 @@
 <resources>
     <declare-styleable name="CirclePageIndicator">
         <attr name="android:orientation" />
-        <attr name="radius" format="dimension" />
-        <attr name="spacing" format="dimension" />
-        <attr name="normalColor" format="color" />
-        <attr name="selectedColor" format="color" />
+        <attr name="bpi_circle_radius" format="dimension" />
+        <attr name="bpi_circle_spacing" format="dimension" />
+        <attr name="bpi_circle_normalColor" format="color" />
+        <attr name="bpi_circle_selectedColor" format="color" />
         <attr name="android:background" />
-        <attr name="count" format="integer" />
-        <attr name="slideable" format="boolean" />
+        <attr name="bpi_circle_count" format="integer" />
+        <attr name="bpi_circle_slideable" format="boolean" />
     </declare-styleable>
 </resources>

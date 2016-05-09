@@ -195,20 +195,20 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CirclePageIndicator);
         mOrientation = a.getInt(R.styleable.CirclePageIndicator_android_orientation,
                 res.getInteger(R.integer.default_circle_orientation));
-        mRadius = a.getDimension(R.styleable.CirclePageIndicator_radius,
+        mRadius = a.getDimension(R.styleable.CirclePageIndicator_bpi_circle_radius,
                 res.getDimension(R.dimen.default_circle_radius));
-        mSpacing = a.getDimension(R.styleable.CirclePageIndicator_spacing,
+        mSpacing = a.getDimension(R.styleable.CirclePageIndicator_bpi_circle_spacing,
                 res.getDimension(R.dimen.default_circle_spacing));
-        mNormalPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_normalColor,
+        mNormalPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_bpi_circle_normalColor,
                 res.getColor(R.color.default_circle_normal_color)));
-        mSelectedPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_selectedColor,
+        mSelectedPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_bpi_circle_selectedColor,
                 res.getColor(R.color.default_circle_selected_color)));
         Drawable background = a.getDrawable(R.styleable.CirclePageIndicator_android_background);
         if (background != null)
             setBackgroundDrawable(background);
-        mCount = a.getInteger(R.styleable.CirclePageIndicator_count,
+        mCount = a.getInteger(R.styleable.CirclePageIndicator_bpi_circle_count,
                 res.getInteger(R.integer.default_circle_count));
-        mSlideable = a.getBoolean(R.styleable.CirclePageIndicator_slideable,
+        mSlideable = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_slideable,
                 res.getBoolean(R.bool.default_circle_slideable));
 
         a.recycle();
