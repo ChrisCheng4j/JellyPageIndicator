@@ -22,7 +22,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     private float mSpacing;
     private int mCount;
     private boolean mSlideable;
-    private boolean mIsSingleShow;
+    private boolean mSingleShow;
 
     private Paint mNormalPaint;
     private Paint mSelectedPaint;
@@ -42,7 +42,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     @Override
     public void setCurrentItem(int item) {
         mCurrentPosition = item;
-        postInvalidate();
+        invalidate();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         if (mSlideable) {
             mCurrentPosition = position;
             mPositionOffset = positionOffset;
-            postInvalidate();
+            invalidate();
         }
     }
 
@@ -58,12 +58,12 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     public void onPageSelected(int position) {
         mPositionOffset = 0;
         mCurrentPosition = position;
-        postInvalidate();
+        invalidate();
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        postInvalidate();
+        invalidate();
     }
 
     public void setOrientation(int orientation) {
@@ -104,7 +104,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     }
 
     public void setSingleShow(boolean isSingleShow) {
-        mIsSingleShow = isSingleShow;
+        mSingleShow = isSingleShow;
         if (mCount == 1)
             invalidate();
     }
@@ -121,7 +121,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (mCount <= 0 || (mCount == 1 && !mIsSingleShow))
+        if (mCount <= 0 || (mCount == 1 && !mSingleShow))
             return;
 
         float longOffset = mRadius;
@@ -217,7 +217,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
                 res.getInteger(R.integer.default_circle_count));
         mSlideable = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_slideable,
                 res.getBoolean(R.bool.default_circle_slideable));
-        mIsSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_single_show,
+        mSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_single_show,
                 res.getBoolean(R.bool.default_circle_oneshow));
 
         a.recycle();
