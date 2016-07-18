@@ -250,8 +250,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
                 mRes.getInteger(R.integer.default_circle_count));
         mSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_pi_circle_single_show,
                 mRes.getBoolean(R.bool.default_circle_single_show));
-        mScrollStyle = a.getInteger(R.styleable.CirclePageIndicator_pi_scroll_style,
-                mRes.getInteger(R.integer.default_circle_scroll_style));
+        mScrollStyle = a.getInteger(R.styleable.CirclePageIndicator_pi_scroll_style, CircleScrollStyle.JELLY);
         mJellyMinRadius = a.getDimension(R.styleable.CirclePageIndicator_pi_jelly_radius_min,
                 mRes.getDimension(R.dimen.default_circle_jelly_min_radius));
 

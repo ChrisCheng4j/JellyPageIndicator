@@ -10,7 +10,7 @@
         <attr name="pi_circle_count" format="integer" />
         <attr name="pi_circle_single_show" format="boolean" />
         <attr name="pi_scroll_style" format="enum">
-            <enum name="none" value="0" />
+            <enum name="selected" value="0" />
             <enum name="swipe" value="1" />
             <enum name="jelly" value="2" />
         </attr>

@@ -26,6 +26,7 @@ public class DisplayAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(container.getContext());
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         imageView.setImageResource(mResIds[position]);
         container.addView(imageView);
         return imageView;
