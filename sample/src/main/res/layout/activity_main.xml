@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp" />
 
-    <com.chrischeng.bezierpageindicator.CirclePageIndicator
+    <com.chrischeng.pageindicator.CirclePageIndicator
         android:id="@+id/pi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

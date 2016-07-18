@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BezierPageIndicator.iml" filepath="$PROJECT_DIR$/BezierPageIndicator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bezierpageindicator/bezierpageindicator.iml" filepath="$PROJECT_DIR$/bezierpageindicator/bezierpageindicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JellyPageIndicator.iml" filepath="$PROJECT_DIR$/JellyPageIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pageindicator/pageindicator.iml" filepath="$PROJECT_DIR$/pageindicator/pageindicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>

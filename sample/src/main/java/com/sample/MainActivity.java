@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.chrischeng.bezierpageindicator.CirclePageIndicator;
+import com.chrischeng.pageindicator.CirclePageIndicator;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 

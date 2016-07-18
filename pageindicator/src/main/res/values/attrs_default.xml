@@ -6,6 +6,9 @@
     <color name="default_circle_normal_color">#ff999999</color>
     <color name="default_circle_selected_color">#ff00beaf</color>
     <integer name="default_circle_count">0</integer>
-    <bool name="default_circle_slideable">true</bool>
-    <bool name="default_circle_oneshow">false</bool>
+    <bool name="default_circle_single_show">false</bool>
+    <integer name="default_circle_scroll_style">2</integer>
+    <dimen name="default_circle_jelly_min_radius">2dp</dimen>
+    <fraction name="default_circle_jelly_start_offset">60%</fraction>
+    <fraction name="default_circle_jelly_scrolled_acceleration">50%</fraction>
 </resources>

@@ -1,1 +1,1 @@
-include ':sample', ':bezierpageindicator', ':bezierpageindicator'
+include ':sample', ':pageindicator'

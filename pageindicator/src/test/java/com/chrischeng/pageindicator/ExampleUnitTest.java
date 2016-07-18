@@ -1,4 +1,4 @@
-package com.chrischeng.bezierpageindicator;
+package com.chrischeng.pageindicator;
 
 import org.junit.Test;
 

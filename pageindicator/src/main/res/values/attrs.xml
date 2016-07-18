@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources>circle_
     <declare-styleable name="CirclePageIndicator">
         <attr name="android:orientation" />
         <attr name="bpi_circle_radius" format="dimension" />
@@ -8,7 +8,12 @@
         <attr name="bpi_circle_selectedColor" format="color" />
         <attr name="android:background" />
         <attr name="bpi_circle_count" format="integer" />
-        <attr name="bpi_circle_slideable" format="boolean" />
         <attr name="bpi_circle_single_show" format="boolean" />
+        <attr name="bpi_scroll_style" format="enum">
+            <enum name="bpi_scroll_style_none" value="0" />
+            <enum name="bpi_scroll_style_slide" value="1" />
+            <enum name="bpi_scroll_style_jelly" value="2" />
+        </attr>
+        <attr name="bpi_jelly_radius_min" format="dimension" />
     </declare-styleable>
 </resources>
