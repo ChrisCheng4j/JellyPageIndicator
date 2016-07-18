@@ -2,9 +2,9 @@ package com.chrischeng.pageindicator;
 
 import android.support.annotation.IntDef;
 
-@IntDef({CircleScrollStyle.NONE, CircleScrollStyle.SLIDE, CircleScrollStyle.JELLY})
+@IntDef({CircleScrollStyle.NONE, CircleScrollStyle.SWIPE, CircleScrollStyle.JELLY})
 public @interface CircleScrollStyle {
     int NONE = 0;
-    int SLIDE = 1;
+    int SWIPE = 1;
     int JELLY = 2;
 }

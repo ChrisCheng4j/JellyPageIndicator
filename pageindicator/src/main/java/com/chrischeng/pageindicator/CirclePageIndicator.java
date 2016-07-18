@@ -61,7 +61,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         switch (mScrollStyle) {
-            case CircleScrollStyle.SLIDE:
+            case CircleScrollStyle.SWIPE:
                 slideScrolled(position, positionOffset);
                 break;
             case CircleScrollStyle.JELLY:
@@ -185,7 +185,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         }
 
         switch (mScrollStyle) {
-            case CircleScrollStyle.SLIDE:
+            case CircleScrollStyle.SWIPE:
                 if (mSelectedPaint.getAlpha() > 0)
                     canvas.drawCircle(cx, cy, mRadius, mSelectedPaint);
                 break;
@@ -235,24 +235,24 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CirclePageIndicator);
         mOrientation = a.getInt(R.styleable.CirclePageIndicator_android_orientation,
                 mRes.getInteger(R.integer.default_circle_orientation));
-        mRadius = a.getDimension(R.styleable.CirclePageIndicator_bpi_circle_radius,
+        mRadius = a.getDimension(R.styleable.CirclePageIndicator_pi_circle_radius,
                 mRes.getDimension(R.dimen.default_circle_radius));
-        mSpacing = a.getDimension(R.styleable.CirclePageIndicator_bpi_circle_spacing,
+        mSpacing = a.getDimension(R.styleable.CirclePageIndicator_pi_circle_spacing,
                 mRes.getDimension(R.dimen.default_circle_spacing));
-        mNormalPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_bpi_circle_normalColor,
+        mNormalPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_pi_circle_normalColor,
                 mRes.getColor(R.color.default_circle_normal_color)));
-        mSelectedPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_bpi_circle_selectedColor,
+        mSelectedPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_pi_circle_selectedColor,
                 mRes.getColor(R.color.default_circle_selected_color)));
         Drawable background = a.getDrawable(R.styleable.CirclePageIndicator_android_background);
         if (background != null)
             setBackgroundDrawable(background);
-        mCount = a.getInteger(R.styleable.CirclePageIndicator_bpi_circle_count,
+        mCount = a.getInteger(R.styleable.CirclePageIndicator_pi_circle_count,
                 mRes.getInteger(R.integer.default_circle_count));
-        mSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_single_show,
+        mSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_pi_circle_single_show,
                 mRes.getBoolean(R.bool.default_circle_single_show));
-        mScrollStyle = a.getInteger(R.styleable.CirclePageIndicator_bpi_scroll_style,
+        mScrollStyle = a.getInteger(R.styleable.CirclePageIndicator_pi_scroll_style,
                 mRes.getInteger(R.integer.default_circle_scroll_style));
-        mJellyMinRadius = a.getDimension(R.styleable.CirclePageIndicator_bpi_jelly_radius_min,
+        mJellyMinRadius = a.getDimension(R.styleable.CirclePageIndicator_pi_jelly_radius_min,
                 mRes.getDimension(R.dimen.default_circle_jelly_min_radius));
 
         a.recycle();

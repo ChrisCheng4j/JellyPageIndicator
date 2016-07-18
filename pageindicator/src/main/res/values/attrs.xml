@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>circle_
+<resources>
     <declare-styleable name="CirclePageIndicator">
         <attr name="android:orientation" />
-        <attr name="bpi_circle_radius" format="dimension" />
-        <attr name="bpi_circle_spacing" format="dimension" />
-        <attr name="bpi_circle_normalColor" format="color" />
-        <attr name="bpi_circle_selectedColor" format="color" />
+        <attr name="pi_circle_radius" format="dimension" />
+        <attr name="pi_circle_spacing" format="dimension" />
+        <attr name="pi_circle_normalColor" format="color" />
+        <attr name="pi_circle_selectedColor" format="color" />
         <attr name="android:background" />
-        <attr name="bpi_circle_count" format="integer" />
-        <attr name="bpi_circle_single_show" format="boolean" />
-        <attr name="bpi_scroll_style" format="enum">
-            <enum name="bpi_scroll_style_none" value="0" />
-            <enum name="bpi_scroll_style_slide" value="1" />
-            <enum name="bpi_scroll_style_jelly" value="2" />
+        <attr name="pi_circle_count" format="integer" />
+        <attr name="pi_circle_single_show" format="boolean" />
+        <attr name="pi_scroll_style" format="enum">
+            <enum name="none" value="0" />
+            <enum name="swipe" value="1" />
+            <enum name="jelly" value="2" />
         </attr>
-        <attr name="bpi_jelly_radius_min" format="dimension" />
+        <attr name="pi_jelly_radius_min" format="dimension" />
     </declare-styleable>
 </resources>
