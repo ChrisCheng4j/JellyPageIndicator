@@ -18,6 +18,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     private static final String KEY_INSTANCE = "instance";
     private static final String KEY_POSITION = "position";
 
+    private Resources mRes;
     private int mOrientation;
     private float mRadius;
     private float mSpacing;
@@ -35,6 +36,8 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     private JellyPoint mEndPoint;
     private float mStartScrolledOffset;
     private float mEndScrolledOffset;
+    private float mRadiusStartOffset;
+    private float mRadiusEndOffset;
     private float mJellyScrolledAcceleration;
 
     private int mCurrentPosition;
@@ -214,6 +217,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        mRes = getResources();
         initGeneralStyle();
         initAttrs(context, attrs);
         initJellyStyle();
@@ -228,30 +232,28 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        Resources res = context.getResources();
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CirclePageIndicator);
         mOrientation = a.getInt(R.styleable.CirclePageIndicator_android_orientation,
-                res.getInteger(R.integer.default_circle_orientation));
+                mRes.getInteger(R.integer.default_circle_orientation));
         mRadius = a.getDimension(R.styleable.CirclePageIndicator_bpi_circle_radius,
-                res.getDimension(R.dimen.default_circle_radius));
+                mRes.getDimension(R.dimen.default_circle_radius));
         mSpacing = a.getDimension(R.styleable.CirclePageIndicator_bpi_circle_spacing,
-                res.getDimension(R.dimen.default_circle_spacing));
+                mRes.getDimension(R.dimen.default_circle_spacing));
         mNormalPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_bpi_circle_normalColor,
-                res.getColor(R.color.default_circle_normal_color)));
+                mRes.getColor(R.color.default_circle_normal_color)));
         mSelectedPaint.setColor(a.getColor(R.styleable.CirclePageIndicator_bpi_circle_selectedColor,
-                res.getColor(R.color.default_circle_selected_color)));
+                mRes.getColor(R.color.default_circle_selected_color)));
         Drawable background = a.getDrawable(R.styleable.CirclePageIndicator_android_background);
         if (background != null)
             setBackgroundDrawable(background);
         mCount = a.getInteger(R.styleable.CirclePageIndicator_bpi_circle_count,
-                res.getInteger(R.integer.default_circle_count));
+                mRes.getInteger(R.integer.default_circle_count));
         mSingleShow = a.getBoolean(R.styleable.CirclePageIndicator_bpi_circle_single_show,
-                res.getBoolean(R.bool.default_circle_single_show));
+                mRes.getBoolean(R.bool.default_circle_single_show));
         mScrollStyle = a.getInteger(R.styleable.CirclePageIndicator_bpi_scroll_style,
-                res.getInteger(R.integer.default_circle_scroll_style));
+                mRes.getInteger(R.integer.default_circle_scroll_style));
         mJellyMinRadius = a.getDimension(R.styleable.CirclePageIndicator_bpi_jelly_radius_min,
-                res.getDimension(R.dimen.default_circle_jelly_min_radius));
+                mRes.getDimension(R.dimen.default_circle_jelly_min_radius));
 
         a.recycle();
     }
@@ -259,6 +261,8 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     private void initJellyStyle() {
         mStartScrolledOffset = getResources().getFraction(R.fraction.default_circle_jelly_start_offset, 1, 1);
         mEndScrolledOffset = 1 - mStartScrolledOffset;
+        mRadiusStartOffset = mRes.getFraction(R.fraction.default_circle_jelly_radius_start_offset, 1, 1);
+        mRadiusEndOffset = mRes.getFraction(R.fraction.default_circle_jelly_radius_end_offset, 1, 1);
         mJellyScrolledAcceleration = getResources().getFraction(R.fraction.default_circle_jelly_scrolled_acceleration, 1, 1);
 
         mJellyPath = new Path();
@@ -356,29 +360,29 @@ public class CirclePageIndicator extends View implements IPageIndicator {
 
     private void jellyScrolled(int position, float positionOffset, float startX, float dis) {
         if (position < mCount - 1) {
-            float radiusOffsetHead = 0.5f;
-            if (positionOffset < radiusOffsetHead)
+            if (positionOffset < mRadiusStartOffset)
                 mStartPoint.setRadius(mJellyMinRadius);
             else
-                mStartPoint.setRadius(((positionOffset - radiusOffsetHead) / (1 - radiusOffsetHead) * mJellyRadiusOffset + mJellyMinRadius));
-            float radiusOffsetFoot = 0.5f;
-            if (positionOffset < radiusOffsetFoot)
-                mEndPoint.setRadius((1 - positionOffset / radiusOffsetFoot) * mJellyRadiusOffset + mJellyMinRadius);
+                mStartPoint.setRadius(((positionOffset - mRadiusStartOffset) / (1 - mRadiusStartOffset) * mJellyRadiusOffset + mJellyMinRadius));
+
+            if (positionOffset < mRadiusEndOffset)
+                mEndPoint.setRadius((1 - positionOffset / mRadiusEndOffset) * mJellyRadiusOffset + mJellyMinRadius);
             else
                 mEndPoint.setRadius(mJellyMinRadius);
 
-            float headX = 1f;
+            float startFraction = 1f;
             if (positionOffset < mStartScrolledOffset) {
                 float positionOffsetTemp = positionOffset / mStartScrolledOffset;
-                headX = (float) ((Math.atan(positionOffsetTemp * mJellyScrolledAcceleration * 2 - mJellyScrolledAcceleration) + (Math.atan(mJellyScrolledAcceleration))) / (2 * (Math.atan(mJellyScrolledAcceleration))));
+                startFraction = (float) ((Math.atan(positionOffsetTemp * mJellyScrolledAcceleration * 2 - mJellyScrolledAcceleration) + (Math.atan(mJellyScrolledAcceleration))) / (2 * (Math.atan(mJellyScrolledAcceleration))));
             }
-            mStartPoint.setX(startX - headX * dis);
-            float footX = 0f;
+            mStartPoint.setX(startX - startFraction * dis);
+
+            float endFraction = 0f;
             if (positionOffset > mEndScrolledOffset) {
                 float positionOffsetTemp = (positionOffset - mEndScrolledOffset) / (1 - mEndScrolledOffset);
-                footX = (float) ((Math.atan(positionOffsetTemp * mJellyScrolledAcceleration * 2 - mJellyScrolledAcceleration) + (Math.atan(mJellyScrolledAcceleration))) / (2 * (Math.atan(mJellyScrolledAcceleration))));
+                endFraction = (float) ((Math.atan(positionOffsetTemp * mJellyScrolledAcceleration * 2 - mJellyScrolledAcceleration) + (Math.atan(mJellyScrolledAcceleration))) / (2 * (Math.atan(mJellyScrolledAcceleration))));
             }
-            mEndPoint.setX(startX - footX * dis);
+            mEndPoint.setX(startX - endFraction * dis);
 
             if (positionOffset == 0) {
                 mStartPoint.setRadius(mRadius);
