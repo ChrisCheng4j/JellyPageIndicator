@@ -4,8 +4,10 @@
         <attr name="android:orientation" />
         <attr name="pi_circle_radius" format="dimension" />
         <attr name="pi_circle_spacing" format="dimension" />
-        <attr name="pi_circle_normalColor" format="color" />
-        <attr name="pi_circle_selectedColor" format="color" />
+        <attr name="pi_circle_stroke_width" format="dimension" />
+        <attr name="pi_circle_stroke_color" format="color" />
+        <attr name="pi_circle_normal_color" format="color" />
+        <attr name="pi_circle_selected_color" format="color" />
         <attr name="android:background" />
         <attr name="pi_circle_count" format="integer" />
         <attr name="pi_circle_single_show" format="boolean" />

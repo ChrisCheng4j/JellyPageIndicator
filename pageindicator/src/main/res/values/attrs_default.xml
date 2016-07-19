@@ -3,6 +3,8 @@
     <integer name="default_circle_orientation">0</integer>
     <dimen name="default_circle_radius">4dp</dimen>
     <dimen name="default_circle_spacing">6dp</dimen>
+    <dimen name="default_circle_stroke_width">0dp</dimen>
+    <color name="default_circle_stroke_color">@android:color/white</color>
     <color name="default_circle_normal_color">#ff999999</color>
     <color name="default_circle_selected_color">#ff00beaf</color>
     <integer name="default_circle_count">0</integer>
