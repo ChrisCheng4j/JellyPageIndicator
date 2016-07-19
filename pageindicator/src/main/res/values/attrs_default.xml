@@ -7,7 +7,7 @@
     <color name="default_circle_selected_color">#ff00beaf</color>
     <integer name="default_circle_count">0</integer>
     <bool name="default_circle_single_show">false</bool>
-    <dimen name="default_circle_jelly_min_radius">2dp</dimen>
+    <dimen name="default_circle_jelly_min_radius">3dp</dimen>
     <fraction name="default_circle_jelly_start_offset">60%</fraction>
     <fraction name="default_circle_jelly_radius_start_offset">50%</fraction>
     <fraction name="default_circle_jelly_radius_end_offset">50%</fraction>

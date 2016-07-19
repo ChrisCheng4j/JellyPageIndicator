@@ -1,55 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sample.MainActivity">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_selected"
+        android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="150dp" />
 
     <com.chrischeng.pageindicator.CirclePageIndicator
-        android:id="@+id/cpi_selected"
+        android:id="@+id/cpi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/vp_selected"
+        android:layout_alignBottom="@id/vp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        app:pi_scroll_style="selected" />
+        android:layout_marginBottom="8dp" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_swipe"
+    <TextView
+        android:id="@+id/tv_style"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@id/vp_selected"
-        android:layout_marginTop="30dp" />
-
-    <com.chrischeng.pageindicator.CirclePageIndicator
-        android:id="@+id/cpi_swipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/vp_swipe"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        app:pi_scroll_style="swipe" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_jelly"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@id/vp_swipe"
-        android:layout_marginTop="30dp" />
-
-    <com.chrischeng.pageindicator.CirclePageIndicator
-        android:id="@+id/cpi_jelly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/vp_jelly"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        app:pi_scroll_style="jelly" />
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ff00beaf"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
 </RelativeLayout>

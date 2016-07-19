@@ -185,6 +185,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
         }
 
         switch (mScrollStyle) {
+            case CircleScrollStyle.SELECTED:
             case CircleScrollStyle.SWIPE:
                 if (mSelectedPaint.getAlpha() > 0)
                     canvas.drawCircle(cx, cy, mRadius, mSelectedPaint);
