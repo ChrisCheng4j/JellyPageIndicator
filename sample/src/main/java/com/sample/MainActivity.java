@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.chrischeng.pageindicator.CirclePageIndicator;
 import com.chrischeng.pageindicator.CircleScrollStyle;
 
-public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final int[] mAds = {R.drawable.ad1, R.drawable.ad2, R.drawable.ad3};
 
@@ -29,12 +29,27 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         DisplayAdapter adapter = new DisplayAdapter(mAds);
         viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(this);
         mIndicator.setCount(adapter.getCount());
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                mIndicator.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mIndicator.onPageSelected(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                mIndicator.onPageScrollStateChanged(state);
+            }
+        });
+
 
         mStyle = CircleScrollStyle.JELLY;
         styleTextView.setText(R.string.jelly);
-
         styleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,21 +70,5 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
                 mIndicator.setScrollStyle(mStyle);
             }
         });
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        mIndicator.onPageScrolled(position, positionOffset, positionOffsetPixels);
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        mIndicator.onPageSelected(position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-        mIndicator.onPageScrollStateChanged(state);
     }
 }
