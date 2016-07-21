@@ -4,7 +4,7 @@ Paging indicator widgets that are compatible with the ViewPager but INDEPENDENT 
 Add the dependencies to your gradle file:
 ```javascript
 dependencies {
-    compile 'com.chrischeng:pageindicator:0.9.0'
+    compile 'com.chrischeng:pageindicator:0.9.1'
 }
 ```
 ##XML Usage
