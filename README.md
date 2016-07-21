@@ -1,5 +1,6 @@
 # JellyPageIndicator
 Paging indicator widgets that are compatible with the ViewPager but INDEPENDENT which provide a few styles when scrolled such as jelly.
+![gif](https://raw.githubusercontent.com/ChrisCheng4j/JellyPageIndicator/master/img/demo.gif)
 ##Integration
 Add the dependencies to your gradle file:
 ```javascript
